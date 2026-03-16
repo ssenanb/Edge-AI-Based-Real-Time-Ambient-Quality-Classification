@@ -51,12 +51,12 @@ The Neural Network Classifier achieved a solid general accuracy on the validatio
 
 | Metric | Value |
 | :---: | :---: |
-| **Overall Accuracy** | 87.5% |
+| **Overall Accuracy** | 94.2% |
 | **Weighted Average F1 Score** | 0.88 |
 | **Weighted Average Precision** | 0.90 |
 | **Weighted Average Recall** | 0.88 |
 | **Area under ROC Curve (AUC)** | 0.83 |
-| **Loss** | 0.65 |
+| **Loss** | 0.45 |
 
 ### Confusion Matrix (Validation Set)
 
