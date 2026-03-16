@@ -68,6 +68,38 @@ Figure 5 : Pin Configuration In The STM32CubeIDE for the STM32F0 Discovery Board
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f0.png" alt="F0 Conf" width="500"/>
 
+PA0 -> ADC_IN0 -> MQ135 AO Pin
+
+PA4 -> GPIO_Output --> STM32F4DISC -> SPI NSS Pin -> PA4
+
+PA5 -> SPI1_SCK --> STM32F4DISC SPI1_SCK -> PA5
+
+PA6 -> SPI1_MISO --> STM32F4DISC SPI1_MISO -> PA6
+
+PA7 -> SPI1_MOSI --> STM32F4FDISC SPI1_MOSI -> PA7
+
+PB6 -> I2C1_SDA -> BME280 SDA
+
+PB7 -> I2C1_SCL -> BME280 SCL
+
+STM32F0DISC -> 3V -> Board
+
+STM32F0DISC -> GND --> STM32F4DISC GND
+
+STM32F0DISC -> GND -> Board
+
 Figure 6 : Pin Configuration In The STM32CubeIDE for the STM32F4 Discovery Board
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f4.png" alt="F4 Conf" width="500"/>
+
+PA4 -> GPIO_Output --> STM32F0DISC -> SPI NSS Pin -> PA4
+
+PA5 -> SPI1_SCK --> STM32F0DISC SPI1_SCK -> PA5
+
+PA6 -> SPI1_MISO --> STM32F0DISC SPI1_MISO -> PA6
+
+PA7 -> SPI1_MOSI --> STM32F0DISC SPI1_MOSI -> PA7
+
+STM32F4DISC -> GND --> STM32F0DISC GND
+
+
