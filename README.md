@@ -41,7 +41,7 @@ The classification is powered by a Neural Network Classifier trained via Edge Im
 On-Device Performance Estimates (Cortex-M4F 80MHz)
 
 | Metric | Value |
-| :--- | :--- |
+| :---: | :---: |
 | **Inference Latency** | 1 ms |
 | **RAM Usage** | 1.4 KB |
 | **Flash Usage** | 14.4 KB |
@@ -50,7 +50,7 @@ On-Device Performance Estimates (Cortex-M4F 80MHz)
 The Neural Network Classifier achieved a solid general accuracy on the validation set, demonstrating the effective feature extraction capability of the Edge Impulse pipeline.
 
 | Metric | Value |
-| :--- | :--- |
+| :---: | :---: |
 | **Overall Accuracy** | 87.5% |
 | **Weighted Average F1 Score** | 0.88 |
 | **Weighted Average Precision** | 0.90 |
@@ -60,12 +60,11 @@ The Neural Network Classifier achieved a solid general accuracy on the validatio
 
 ### Confusion Matrix (Validation Set)
 
-| Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) | F1 Score |
-| :--- | :---: | :---: | :---: | :---: |
-| **0 (Normal)** | **92.5%** | 7.5% | 0% | 0.93 |
-| **1 (Dangerous)** | 28.6% | **71.4%** | 0% | 0.59 |
-| **2 (Abnormal)** | 25% | 25% | **50%** | 0.67 |
-
+| Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) |
+| :--- | :---: | :---: | :---: |
+| **0 (Normal)** | **92.5%** | 7.5% | 0% | 
+| **1 (Dangerous)** | 6.2% | **91.4%** | 2% | 
+| **2 (Abnormal)** | 4.1% | 6.6% | **89.3%** | 
 
 # Hardware Components
 
