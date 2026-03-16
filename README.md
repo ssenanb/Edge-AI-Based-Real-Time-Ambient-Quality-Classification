@@ -2,7 +2,7 @@
 
 # Project Description
 
-This project implements a distributed environmental monitoring system using two STM32 Discovery boards. The STM32F0 board acts as a sensor node, collecting temperature, humidity, and gas data via BME280 and MQ135 sensors and transmitting them to the STM32F4 processing unit using SPI with DMA for high-efficiency data transfer. The STM32F4 unit, running on FreeRTOS, processes these inputs through an Edge Impulse-trained machine learning model to classify ambient air quality into three categories: normal, dangerous, and abnormal. The final classification results and system status are continuously monitored in real-time via Serial Wire Output (SWO).
+This project implements a distributed environmental monitoring system using two STM32 Discovery boards. The STM32F0 board acts as a sensor node, collecting temperature, humidity, and gas data via BME280 and MQ135 sensors and transmitting them to the STM32F4 processing unit using SPI with DMA for high-efficiency data transfer. The STM32F4 unit, running on FreeRTOS, processes these inputs through an Edge Impulse-trained machine learning model to classify ambient air quality into three categories: normal, dangerous, and abnormal. The final classification results and system status are continuously monitored in real-time via Serial Wire Output.
 
 # Software Architecture
 
@@ -19,3 +19,15 @@ The sensor data transmitted from the STM32F0 is received by the STM32F4 via SPI-
 Figure 1 : System Overview
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/system_overview" alt="System Overview" width="500"/>
+
+Figure 2 : Category 0
+
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_0.png" alt="output_0" width="500"/>
+
+Figure 3 : Category 1
+
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_1.png" alt="output_1" width="500"/>
+
+Figure 4 : Category 2
+
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_2.png" alt="output_2" width="500"/>
