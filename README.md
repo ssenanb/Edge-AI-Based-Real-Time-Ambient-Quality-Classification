@@ -58,6 +58,15 @@ The Neural Network Classifier achieved a solid general accuracy on the validatio
 | **Area under ROC Curve (AUC)** | 0.83 |
 | **Loss** | 0.65 |
 
+### Confusion Matrix (Validation Set)
+
+| Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) | F1 Score |
+| :--- | :---: | :---: | :---: | :---: |
+| **0 (Normal)** | **92.5%** | 7.5% | 0% | 0.93 |
+| **1 (Dangerous)** | 28.6% | **71.4%** | 0% | 0.59 |
+| **2 (Abnormal)** | 25% | 25% | **50%** | 0.67 |
+
+
 # Hardware Components
 
 * __STM32F0DISC__ – Main microcontroller unit for sensor acquisition and processing
