@@ -47,7 +47,7 @@ On-Device Performance Estimates (Cortex-M4F 80MHz)
 | **Flash Usage** | 14.4 KB |
 | **Optimization** | Quantized (int8) |
 
-### Confusion Matrix (Validation Set)
+Confusion Matrix (Validation Set)
 
 | Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) |
 | :--- | :---: | :---: | :---: |
