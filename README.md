@@ -33,3 +33,41 @@ Figure 3 : Category 1
 Figure 4 : Category 2
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_2.png" alt="output_2" width="500"/>
+
+# Hardware Components
+
+* __STM32F0DISC__ – Main microcontroller unit for sensor acquisition and processing
+
+* __STM32F4DISC__ –  Performs real-time classification using the trained machine learning model
+
+* __BME280 Sensor__ – Measures temperature, humidity, and pressure
+
+* __MQ135 Sensor__ – Detects air quality (gas concentration)  
+
+* __Jumper Cables__ – Used to connect components  
+
+* __Breadboard__ – For prototyping and sensor wiring
+
+* __USB Cable / Power Supply__ – Powering the STM32F0 and STM32F4 modules
+
+# Software Components
+
+* __STM32CubeIDE__ – Embedded firmware development for STM32 borads
+
+* __C/C++ Programming Languages__ – Core programming languages for embedded development
+
+* __FreeRTOS (CMSIS-RTOS v2)__ – Real-time task management on STM32F4
+
+* __SWV ITM Data Console__ – Monitors real-time model predictions and system status
+
+* __Edge Impulse__ – Embedded machine learning development platform for model training and deployment
+
+# Pin Configuration
+
+Figure 5 : Pin Configuration In The STM32CubeIDE for the STM32F0 Discovery Board
+
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f0.png" alt="F0 Conf" width="500"/>
+
+Figure 6 : Pin Configuration In The STM32CubeIDE for the STM32F4 Discovery Board
+
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f4.png" alt="F4 Conf" width="500"/>
