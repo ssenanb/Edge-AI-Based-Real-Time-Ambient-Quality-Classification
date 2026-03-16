@@ -24,7 +24,7 @@ During the training of the machine learning model, environmental data was labele
 
 __Figure 2__ : Category 0
 
-<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_0.png" alt="output_0" width="500"/>
+<img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/normal_output.png" alt="output_0" width="500"/>
 
 __Figure 3__ : Category 1
 
