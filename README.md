@@ -34,6 +34,30 @@ Figure 4 : Category 2
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_2.png" alt="output_2" width="500"/>
 
+# Machine Learning Model Details & Performance
+
+The classification is powered by a Neural Network Classifier trained via Edge Impulse. To ensure high efficiency on the STM32F4, the model was quantized to int8, significantly reducing memory footprint without sacrificing performance.
+
+On-Device Performance Estimates (Cortex-M4F 80MHz)
+
+| Metric | Value |
+| :--- | :--- |
+| **Inference Latency** | 1 ms |
+| **RAM Usage** | 1.4 KB |
+| **Flash Usage** | 14.4 KB |
+| **Optimization** | Quantized (int8) |
+
+The Neural Network Classifier achieved a solid general accuracy on the validation set, demonstrating the effective feature extraction capability of the Edge Impulse pipeline.
+
+| Metric | Value |
+| :--- | :--- |
+| **Overall Accuracy** | 87.5% |
+| **Weighted Average F1 Score** | 0.88 |
+| **Weighted Average Precision** | 0.90 |
+| **Weighted Average Recall** | 0.88 |
+| **Area under ROC Curve (AUC)** | 0.83 |
+| **Loss** | 0.65 |
+
 # Hardware Components
 
 * __STM32F0DISC__ – Main microcontroller unit for sensor acquisition and processing
