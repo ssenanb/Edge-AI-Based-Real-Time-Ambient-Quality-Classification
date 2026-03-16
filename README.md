@@ -20,6 +20,8 @@ Figure 1 : System Overview
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/system_overview" alt="System Overview" width="500"/>
 
+During the training of the machine learning model, environmental data was labeled into three different classes according to the ambient condition. Baseline levels of temperature, humidity, and gas were labeled as '0 (Normal)'. If the values increased slightly, they were labeled as '1 (Dangerous)'. When all parameters (temperature, humidity, gas) showed a significant and simultaneous increase, they were labeled as '2 (Abnormal)'. To test the system, I performed controlled experiments using external sources, such as using a hair dryer to increase temperature and applying substances like deodorant and ethyl alcohol to increase gas levels. These tests ensured that the model could accurately classify different environmental conditions in real-time
+
 Figure 2 : Category 0
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_0.png" alt="output_0" width="500"/>
