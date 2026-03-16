@@ -63,7 +63,7 @@ The Neural Network Classifier achieved a solid general accuracy on the validatio
 | Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) |
 | :--- | :---: | :---: | :---: |
 | **0 (Normal)** | **92.5%** | 7.5% | 0% | 
-| **1 (Dangerous)** | 6.2% | **91.4%** | 2% | 
+| **1 (Dangerous)** | 6.6% | **91.4%** | 2% | 
 | **2 (Abnormal)** | 4.1% | 6.6% | **89.3%** | 
 
 # Hardware Components
