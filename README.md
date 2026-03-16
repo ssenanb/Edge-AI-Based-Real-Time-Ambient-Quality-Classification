@@ -12,7 +12,7 @@ This project implements an Edge AI-powered environmental monitoring system using
 
 This project utilizes a custom-written BME280 driver to measure temperature, humidity, and pressure, alongside an MQ135 sensor to monitor ambient gas levels. These sensor readings are transmitted from the STM32F0 Discovery board to the STM32F4 Discovery board via SPI using DMA. By offloading the data transfer process from the CPU, DMA ensures low-latency, high-speed communication and prevents potential bottlenecks in the main execution flow, allowing for more efficient resource management.
 
-  * __STM32F4 Discovery Board Size__
+  * __STM32F4 Discovery Board Side__
 
 The sensor data transmitted from the STM32F0 is received by the STM32F4 via SPI-DMA. Initially, the system operated without an RTOS, which led to timing conflicts and data corruption, causing the machine learning model to produce unreliable results. To overcome this and ensure a deterministic execution flow, FreeRTOS is integrated. The architecture consists of two main tasks: one dedicated to receiving sensor data and another for executing the Edge Impulse-trained machine learning model. A binary semaphore is implemented to synchronize these tasks, ensuring the model only initiates processing once the sensor data acquisition is successfully completed. This synchronization guarantees that the model always processes valid, consistent data, allowing it to accurately classify the ambient air quality into three distinct categories: 0 (Normal), 1 (Dangerous), and 2 (Abnormal).
 
