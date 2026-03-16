@@ -91,7 +91,7 @@ __Figure 5__ : Pin Configuration In The STM32CubeIDE for the STM32F0 Discovery B
 
 PA0 -> ADC_IN0 -> MQ135 AO Pin
 
-PA4 -> GPIO_Output --> STM32F4DISC -> SPI NSS Pin -> PA4
+PA4 -> GPIO_Output --> STM32F4DISC -> SPI NSS Pin -> PA4 (It is managed by software)
 
 PA5 -> SPI1_SCK --> STM32F4DISC SPI1_SCK -> PA5
 
@@ -113,7 +113,7 @@ __Figure 6__ : Pin Configuration In The STM32CubeIDE for the STM32F4 Discovery B
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f4.png" alt="F4 Conf" width="500"/>
 
-PA4 -> GPIO_Output --> STM32F0DISC -> SPI NSS Pin -> PA4
+PA4 -> GPIO_Output --> STM32F0DISC -> SPI NSS Pin -> PA4 (It is managed by software)
 
 PA5 -> SPI1_SCK --> STM32F0DISC SPI1_SCK -> PA5
 
