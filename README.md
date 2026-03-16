@@ -52,8 +52,12 @@ Confusion Matrix (Validation Set)
 | Actual \ Predicted | 0 (Normal) | 1 (Dangerous) | 2 (Abnormal) |
 | :--- | :---: | :---: | :---: |
 | **0 (Normal)** | **92.5%** | 7.5% | 0% | 
-| **1 (Dangerous)** | 6.6% | **91.4%** | 2% | 
-| **2 (Abnormal)** | 4.1% | 6.6% | **89.3%** | 
+| **1 (Dangerous)** | 28.6% | **71.4%** | 0% | 
+| **2 (Abnormal)** | 25% | 25% | **50.0%** | 
+
+Accuracy: 87.5%
+
+Note: While detecting Class 2 (Abnormal) states, the model may occasionally produce similar probabilities to Class 1 (Dangerous) (e.g., a 48% - 48% split). This behavior stems from the high degree of similarity in sensor characteristics between these two classes. In such cases of uncertainty, the system proceeds by selecting the class with the highest probability. To refine the distinction between these categories, future updates with more specific and diverse datasets are planned.
 
 # Hardware Components
 
