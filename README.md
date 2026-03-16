@@ -16,21 +16,21 @@ This project utilizes a custom-written BME280 driver to measure temperature, hum
 
 The sensor data transmitted from the STM32F0 is received by the STM32F4 via SPI-DMA. Initially, the system operated without an RTOS, which led to timing conflicts and data corruption, causing the machine learning model to produce unreliable results. To overcome this and ensure a deterministic execution flow, FreeRTOS is integrated. The architecture consists of two main tasks: one dedicated to receiving sensor data and another for executing the Edge Impulse-trained machine learning model. A binary semaphore is implemented to synchronize these tasks, ensuring the model only initiates processing once the sensor data acquisition is successfully completed. This synchronization guarantees that the model always processes valid, consistent data, allowing it to accurately classify the ambient air quality into three distinct categories: 0 (Normal), 1 (Dangerous), and 2 (Abnormal).
 
-Figure 1 : System Overview
+__Figure 1__ : System Overview
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/system_overview" alt="System Overview" width="500"/>
 
 During the training of the machine learning model, environmental data was labeled into three different classes according to the ambient condition. Baseline levels of temperature, humidity, and gas were labeled as '0 (Normal)'. If the values increased slightly, they were labeled as '1 (Dangerous)'. When all parameters (temperature, humidity, gas) showed a significant and simultaneous increase, they were labeled as '2 (Abnormal)'. To test the system, I performed controlled experiments using external sources, such as using a hair dryer to increase temperature and applying substances like deodorant and ethyl alcohol to increase gas levels. These tests ensured that the model could accurately classify different environmental conditions in real-time
 
-Figure 2 : Category 0
+__Figure 2__ : Category 0
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_0.png" alt="output_0" width="500"/>
 
-Figure 3 : Category 1
+__Figure 3__ : Category 1
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_1.png" alt="output_1" width="500"/>
 
-Figure 4 : Category 2
+__Figure 4__ : Category 2
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/output_2.png" alt="output_2" width="500"/>
 
@@ -85,7 +85,7 @@ Confusion Matrix (Validation Set)
 
 # Pin Configuration
 
-Figure 5 : Pin Configuration In The STM32CubeIDE for the STM32F0 Discovery Board
+__Figure 5__ : Pin Configuration In The STM32CubeIDE for the STM32F0 Discovery Board
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f0.png" alt="F0 Conf" width="500"/>
 
@@ -109,7 +109,7 @@ STM32F0DISC -> GND --> STM32F4DISC GND
 
 STM32F0DISC -> GND -> Board
 
-Figure 6 : Pin Configuration In The STM32CubeIDE for the STM32F4 Discovery Board
+__Figure 6__ : Pin Configuration In The STM32CubeIDE for the STM32F4 Discovery Board
 
 <img src="https://github.com/ssenanb/Edge-AI-Based-Real-Time-Ambient-Quality-Classification/blob/main/pin_conf_f4.png" alt="F4 Conf" width="500"/>
 
