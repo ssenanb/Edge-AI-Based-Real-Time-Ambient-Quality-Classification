@@ -1,45 +1,8 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2026 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 #include "string.h"
 #include <stdarg.h>
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
 
 typedef struct{
 	float temperature;
@@ -49,11 +12,8 @@ typedef struct{
 }SensorData;
 
 static SensorData received_sensor_data;
-int flag = 0;
+int flag = 0; //for debug
 
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
 CRC_HandleTypeDef hcrc;
 
 SPI_HandleTypeDef hspi1;
@@ -83,9 +43,6 @@ osSemaphoreId_t BinarySemHandle;
 const osSemaphoreAttr_t BinarySem_attributes = {
   .name = "BinarySem"
 };
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -96,7 +53,6 @@ static void MX_CRC_Init(void);
 void StartSPITask(void *argument);
 void StartEdgeImpulseTask(void *argument);
 
-/* USER CODE BEGIN PFP */
 int get_feature_data(size_t offset, size_t length, float *out_ptr) {
 	SensorData local_data = received_sensor_data;
 	float sensor_data[4];
@@ -114,49 +70,19 @@ int get_feature_data(size_t offset, size_t length, float *out_ptr) {
 
     return 0;
 }
-/* USER CODE END PFP */
 
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
 
-/* USER CODE END 0 */
-
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-
-	HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
+  HAL_Init();
+  
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_SPI1_Init();
   MX_CRC_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
 
   /* Init scheduler */
   osKernelInitialize();
@@ -202,15 +128,10 @@ int main(void)
 
   /* We should never get here as control is now taken by the scheduler */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+    
   }
-  /* USER CODE END 3 */
 }
 
 /**
@@ -400,8 +321,6 @@ void ei_printf(const char *format, ...) {
 /* USER CODE END Header_StartSPITask */
 void StartSPITask(void *argument)
 {
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
   for(;;)
   {
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
@@ -415,7 +334,6 @@ void StartSPITask(void *argument)
 
     osDelay(20);
   }
-  /* USER CODE END 5 */
 }
 
 /* USER CODE BEGIN Header_StartEdgeImpulseTask */
@@ -427,24 +345,16 @@ void StartSPITask(void *argument)
 /* USER CODE END Header_StartEdgeImpulseTask */
 void StartEdgeImpulseTask(void *argument)
 {
-  /* USER CODE BEGIN StartEdgeImpulseTask */
 	signal_t signal;
-	signal.total_length = 4; // Modelin kaç özellik (feature) bekliyorsa o sayı
+	signal.total_length = 4; 
 	signal.get_data = &get_feature_data;
-  /* Infinite loop */
   for(;;)
   {
-	  //1. Sensörden yeni veri geldiğinde (SPI veya başka bir yöntemle)
-	  	      // received_sensor_data struct'ın güncellenmiş olmalı.
-
-	  	      // 2. Modeli çalıştır
 	  if(osSemaphoreAcquire(BinarySemHandle, osWaitForever) == osOK)
 	  {
-
 		  ei_impulse_result_t result = { 0 };
 		  EI_IMPULSE_ERROR res = run_classifier(&signal, &result, true);
 
-				  // 3. Sonuçları konsola bas
 		  ei_printf("run_classifier returned: %d\n", res);
 
 		  if (res == EI_IMPULSE_OK) {
@@ -459,8 +369,6 @@ void StartEdgeImpulseTask(void *argument)
 
 			  ei_printf("]\n");
 
-					  // Durumu yorumla (0: Normal, 1: Tehlikeli, 2: Anormal)
-					  // Not: Label sıralamasını Edge Impulse dashboardundan kontrol et!
 			  float max_val = 0;
 			  int label_idx = 0;
 			  for(int i=0; i<EI_CLASSIFIER_LABEL_COUNT; i++) {
