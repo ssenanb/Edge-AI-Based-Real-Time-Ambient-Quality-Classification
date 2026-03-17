@@ -1,39 +1,6 @@
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2026 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-/* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */
 #include "BME280.h"
 #include "string.h"
-/* USER CODE END Includes */
-
-/* Private typedef -----------------------------------------------------------*/
-/* USER CODE BEGIN PTD */
-
-/* USER CODE END PTD */
-
-/* Private define ------------------------------------------------------------*/
-/* USER CODE BEGIN PD */
-//Her değişkeni birbirine 1 byte'lık sınırlarla hizala. Birden çok struct tanımlayabilirsin bu iki # arasında.
-
 
 typedef struct{
 	float temperature;
@@ -45,14 +12,6 @@ typedef struct{
 SensorData sensor_data;
 
 
-/* USER CODE END PD */
-
-/* Private macro -------------------------------------------------------------*/
-/* USER CODE BEGIN PM */
-
-/* USER CODE END PM */
-
-/* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc;
 
 I2C_HandleTypeDef hi2c1;
@@ -60,23 +19,12 @@ I2C_HandleTypeDef hi2c1;
 SPI_HandleTypeDef hspi1;
 DMA_HandleTypeDef hdma_spi1_tx;
 
-/* USER CODE BEGIN PV */
-
-/* USER CODE END PV */
-
-/* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_ADC_Init(void);
-/* USER CODE BEGIN PFP */
-
-/* USER CODE END PFP */
-
-/* Private user code ---------------------------------------------------------*/
-/* USER CODE BEGIN 0 */
 
 uint8_t MQ135_Sensor(){
 	HAL_ADC_Start(&hadc);
@@ -86,34 +34,13 @@ uint8_t MQ135_Sensor(){
 
 	return sensor_data.gas_data;
 }
-/* USER CODE END 0 */
 
-/**
-  * @brief  The application entry point.
-  * @retval int
-  */
+
 int main(void)
 {
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
   SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
@@ -121,32 +48,24 @@ int main(void)
   MX_SPI1_Init();
   MX_I2C1_Init();
   MX_ADC_Init();
-  /* USER CODE BEGIN 2 */
 
+ //HAL_BUSY solution
   if(__HAL_I2C_GET_FLAG(&hi2c1, I2C_FLAG_BUSY)){
 	  MX_I2C1_Init();
 	  HAL_Delay(10);
 	  BME280_Init();
   }else
 	  BME280_Init();
-  /* USER CODE END 2 */
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
 
 	  BME280_ReadSensorData(&sensor_data.temperature, &sensor_data.humidity, &sensor_data.pressure);
 	  MQ135_Sensor();
 
-	 // HAL_SPI_Transmit(&hspi1, sensor_data.raw, 13, 100);
 	  HAL_SPI_Transmit_DMA(&hspi1, (uint8_t*)&sensor_data, sizeof(SensorData));
 	  HAL_Delay(100);
   }
-  /* USER CODE END 3 */
 }
 
 /**
